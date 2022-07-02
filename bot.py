@@ -154,7 +154,7 @@ async def download_video(client, callback : CallbackQuery):
             "progress_hooks": [lambda d: download_progress_hook(d, callback.message, client)]
         }
 
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+    with youtube_dl.YoutubeDL() as ydl:
         try:
             await run_async(ydl.download, [url])
         except DownloadError:
